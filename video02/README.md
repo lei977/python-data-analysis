@@ -106,14 +106,69 @@ Python数据分析
         inv()   逆
 
 6-Octave教程
+    基本操作
+        Octave，一种原始语言，可快速实现算法原型。
+            基本数学运算
+            逻辑运算
+            异或运算
+            变量运算
+            复杂屏幕输出：DISP命令
+            向量和矩阵生成及赋值
+            hist()命令绘制直方图
+            help命令
 
+    移动数据
+        构建矩阵
+        size()命令返回尺寸
+        length()返回最大维度
+        pwd命令显示工作路径
+        who显示所有变量、whos
+        load XXX.dat 加载文件
+        save hello.mat v 存入硬盘 save hello.txt v -ascii
+        clear 清除所有变量
+        A[:,2] 取矩阵A第二列
+        A=[A,[100,101,102]] 矩阵A加一列
+        C=[A,B] 合并A、B  C=[A;B]
 
+    计算数据
+        点乘运算 A.*B
+        A.^2 每个元素平方
+        1./A 每个元素取倒数
+        log(v) 对数运算
+        exp(v) 幂次运算
+        abs 求绝对值
+        A' 转置
+        A=magic(3) 魔方阵（幻方）：它们所有的行和列和对角线加起来都等于相同的值。
+        [r,c]=find(A>=7) 查找A矩阵中大于等于7的元素
+        sum(a) 求和
 
+    数据绘制（绘图数据）
+        t=[0:0.01:0.98];
+        t
+        y1=sin(2*pi*4*t)
+        plot(t,y1)
 
+        print -dpng 'myplot.png'
+        Clf 清除一副图像
 
+        可视化矩阵 imagesc(A)
+            imagesc(magic(15)), colorbar, colormap gray
 
+    控制语句：for、while、if语句
+        for循环
+            可用：break、continue
+        while循环
 
+        if-else语句
 
+        定义函数
+            function y = squareThisNumber(x)
+
+    矢量|向量化
+        使程序运行更快
+
+    编程作业
+        源码提交
 
 7-逻辑回归（Logistic Regression）
 
