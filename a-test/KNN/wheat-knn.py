@@ -148,8 +148,8 @@ def datingClassTest():
     filename = "wheatSet.txt"
     # 将返回的特征矩阵和分类向量分别存储到datingDataMat和datingLabels中
     datingDataMat, datingLabels = file2matrix(filename)
-    # 取所有数据的百分之十
-    hoRatio = 0.25
+    # 取所有数据的前百分之五十作为测试集
+    hoRatio = 0.50
     # 数据归一化,返回归一化后的矩阵,数据范围,数据最小值
     normMat, ranges, minVals = autoNorm(datingDataMat)
     # 获得normMat的行数
