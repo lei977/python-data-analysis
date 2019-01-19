@@ -10,8 +10,7 @@ import operator
 函数说明:kNN算法,分类器
 
 通过数据集中样本数据构建数据模型，对测试数据进行分类。
-数据集：wheatSet.txt
-数据可视化操作：showData.py
+数据集：wheatSet-index1.txt
 
 Parameters:
 	inX - 用于分类的数据(测试集)
@@ -56,7 +55,14 @@ def classify0(inX, dataSet, labels, k):
 
 
 """
-函数说明:打开并解析文件，对数据进行分类：1代表one,2代表two,3代表three
+函数说明:打开并解析文件，对数据进行分类：
+    对发芽率进行预测：
+        1代表[96-100]
+        2代表[91-95]
+        3代表[86-90]
+        4代表[81-85]
+        5代表[76-80]
+        6代表[71-75]
 Parameters:
 	filename - 文件名
 Returns:
@@ -76,7 +82,7 @@ def file2matrix(filename):
     # 得到文件行数
     numberOfLines = len(arrayOLines)
     # 返回的NumPy矩阵,解析完成的数据:numberOfLines行,3列
-    returnMat = np.zeros((numberOfLines, 7))
+    returnMat = np.zeros((numberOfLines, 6))
     # 返回的分类标签向量
     classLabelVector = []
     # 行的索引值
@@ -86,15 +92,22 @@ def file2matrix(filename):
         line = line.strip()
         # 使用s.split(str="",num=string,cout(str))将字符串根据'\t'分隔符进行切片。
         listFromLine = line.split('\t')
-        # 将数据前三7列提取出来,存放到returnMat的NumPy矩阵中,也就是特征矩阵
-        returnMat[index, :] = listFromLine[0:7]
+        # 将数据前6列提取出来,存放到returnMat的NumPy矩阵中,也就是特征矩阵
+        returnMat[index, :] = listFromLine[0:6]
         # 根据文本中标记的喜欢的程度进行分类,1代表不喜欢,2代表魅力一般,3代表极具魅力
-        if listFromLine[-1] == 'one':
+        # 根据文本中标记的发芽率类别进行分类,1代表[96-100],2代表[91-95],3代表[86-90],4代表[81-85],5代表[76-80],6代表[71-75]
+        if listFromLine[-1] == '1':
             classLabelVector.append(1)
-        elif listFromLine[-1] == 'two':
+        elif listFromLine[-1] == '2':
             classLabelVector.append(2)
-        elif listFromLine[-1] == 'three':
+        elif listFromLine[-1] == '3':
             classLabelVector.append(3)
+        elif listFromLine[-1] == '4':
+            classLabelVector.append(4)
+        elif listFromLine[-1] == '5':
+            classLabelVector.append(5)
+        elif listFromLine[-1] == '6':
+            classLabelVector.append(6)
         index += 1
     return returnMat, classLabelVector
 
@@ -145,7 +158,7 @@ Returns:
 
 def datingClassTest():
     # 打开的文件名
-    filename = "wheatSet.txt"
+    filename = "wheatSet-index1.txt"
     # 将返回的特征矩阵和分类向量分别存储到datingDataMat和datingLabels中
     datingDataMat, datingLabels = file2matrix(filename)
     # 取所有数据的前百分之五十作为测试集

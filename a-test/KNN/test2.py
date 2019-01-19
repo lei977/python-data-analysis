@@ -40,7 +40,7 @@ def classify0(inX, dataSet, labels, k):
     for i in range(k):
         # 取出前k个元素的类别
         voteIlabel = labels[sortedDistIndices[i]]
-        # dict.get(key,default=None),字典的get()方法,返回指定键的值,如果值不在字典中返回默认值。
+        # dict.http(key,default=None),字典的get()方法,返回指定键的值,如果值不在字典中返回默认值。
         # 计算类别次数
         classCount[voteIlabel] = classCount.get(voteIlabel, 0) + 1
     # python3中用items()替换python2中的iteritems()
